@@ -1,4 +1,4 @@
-codes = open("test.txt").read().splitlines()
+codes = open("day1.txt").read().splitlines()
 start = 50
 passwd = 0
 for code in codes:
