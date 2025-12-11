@@ -1,23 +1,11 @@
-codes = open("test.txt").read().splitlines()
+codes = open("day1/day1.txt").read().splitlines()
 position = 50
 passwd = 0
 for code in codes:
-    print(position)
-    if code[0] == "L":
-        direction = -1
-    else:
-        direction = 1
+    direction = -1 if code[0] == "L" else 1
     clicks = int(code[1:])
-    position += direction * clicks
-    while position > 99:
-        position -= 100
-        passwd += 1
-        print(".")
-    while position < 0:
-        position += 100
-        passwd += 1
-        print(".")
-    if position == 0:
-        passwd += 1
-        print(".")
+    for _ in range(clicks):
+        position = (position + direction) % 100
+        if position == 0:
+            passwd += 1
 print("Passes:", passwd)
